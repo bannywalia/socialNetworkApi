@@ -91,7 +91,28 @@ const deleteUser = async (req, res, next) => {
   }
   return res.status(200).json({ message: "Deleted Succesdfully!" });
 };
+
+//GET USER by ID
+
+const getUserById = async (req, res, next) => {
+  const id = req.params.id;
+  let user;
+
+  try {
+    user = await User.findById(id);
+  } catch (err) {
+    return next(err);
+  }
+  if (!user) {
+    return res
+      .status(404)
+      .json({ message: "Unable to find user with this ID" });
+  }
+  return res.status(200).json({ user });
+};
+
 exports.getAllUsers = getAllUsers;
 exports.addUser = addUser;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
+exports.getUserById = getUserById;
