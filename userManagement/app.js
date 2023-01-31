@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const router = require("./routes/user-routes");
+const router = require("./routes/api/user-routes");
 const app = express();
 const url = "mongodb://127.0.0.1:27017/socialnetwork";
 
